@@ -15,7 +15,11 @@ import cv.resource.FmeaResource;
 @ApplicationPath("/rest")
 public class CvApplication extends Application
 {
-    // For Tomcat this can be an empty class, but for app-engine we need these explicit declarations.
+    //
+    // For Tomcat this can be an empty class.
+    //
+    // For Google AppEngine we need these explicit declarations:
+    //
     
     static
     {
