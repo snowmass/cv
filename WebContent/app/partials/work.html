@@ -1,0 +1,53 @@
+<div>
+    <div>
+        <a href="#/about"> About </a>
+    </div>
+    <br />
+    <table>
+        <tr>
+            <td><input
+                type="file"
+                accept="text/xml"
+                ng-file-select="onFileSelect($files)"
+                onclick="this.value=null"></td>
+            <td ng-show="hasData"><span> Work With </span><select
+                ng-model="selection"
+                ng-click="loadExperimentalSet(selection.id)"
+                ng-options="selectItem.label for selectItem in dropdown"></select></td>
+            <td ng-show="hasNewSort"><a ng-click="saveExperimentalSet(selection.id,predicate)">
+                    <button class="saveBtn">Save Sort</button>
+            </a></td>
+            <td ng-show="isNewSortPersisted"><a
+                target="_self"
+                ng-click="download()"
+                ng-href="{{documentDownloadUrl}}">
+                    <button class="saveBtn">Save File</button>
+            </a></td>
+        </tr>
+    </table>
+    <table
+        st-table="updatedCollection"
+        st-safe-src="expCollection"
+        class="table table-striped"
+        ng-show="hasSelectedSet">
+        <thead>
+            <tr>
+                <th colspan="4">{{ selection.label }}</th>
+            <tr>
+                <th >GUID</th>
+                <th st-sort="getters.DesignIndex">Design Index</th>
+                <th st-sort="getters.RunIndex">Run Index</th>
+                <th st-sort="getters.value">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="exp in updatedCollection">
+                <td>{{exp.GUID}}</td>
+                <td>{{exp.DesignIndex}}</td>
+                <td>{{exp.RunIndex}}</td>
+                <td>{{exp.value}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
