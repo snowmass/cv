@@ -26,7 +26,12 @@
     cd cv
     git checkout master
     git fetch origin
+    
+    # At work:
     git rebase origin
+    # At home
+    git merge origin/master
+    
     git add src/main/java/cv/resource/BaseResource.java src/main/java/cv/repository/
     git commit -m "Add DDD repository demonstration"
     git push origin master
