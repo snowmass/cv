@@ -6,7 +6,7 @@
     
 <!-- 
 
-    web.xml and this file only needed for Google app engine.  <application must be project id.  
+    Populated web.xml and this file only needed for Google app engine.  <application must be project id.  
     
 
   CREDENTIALS
@@ -21,6 +21,16 @@
 
     ./appcfg.sh \-\-email=bgroeneveld@gmail.com update /opt/apache-tomcat-7.0.57/webapps/cv
 
+  SCM
+  
+    cd cv
+    git checkout master
+    git fetch origin
+    git rebase origin
+    git add src/main/java/cv/resource/BaseResource.java src/main/java/cv/repository/
+    git commit -m "Add DDD repository demonstration"
+    git push origin master
+    
 -->
     
 </appengine-web-app>

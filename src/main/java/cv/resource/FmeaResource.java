@@ -10,7 +10,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 @Path("/fmea")
-public class FmeaResource
+public class FmeaResource extends BaseResource
 {
     private static Log log = LogFactory.getLog(FmeaResource.class);
     

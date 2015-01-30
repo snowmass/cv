@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -29,13 +28,14 @@ import org.jboss.resteasy.util.GenericType;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import cv.repository.DocumentRepository;
 import cv.representation.Experiment;
 import cv.representation.ExperimentalSet;
 import cv.representation.ExperimentalSets;
 import cv.representation.SelectItem;
 
 @Path("/document")
-public class DocumentResource
+public class DocumentResource extends BaseResource
 {
     private static Log log = LogFactory.getLog(DocumentResource.class);
     
@@ -63,7 +63,7 @@ public class DocumentResource
                 
                 ExperimentalSets experimentalSets = ExperimentalSets.hydrateDocumentInstance(expectedXml);
                 experimentalSets.filename = extractFilename(header);
-                setExperimentalSets(request, experimentalSets);
+                DocumentRepository.instance().setExperimentalSets(request, experimentalSets);
 
                 log.debug("uploadFile() experimentalSets.toJson:" + experimentalSets.toJson());
                 log.debug("uploadFile() experimentalSets.toXml:" + experimentalSets.toXml());
@@ -107,7 +107,7 @@ public class DocumentResource
     public Response selectItemList(@Context HttpServletRequest request)
     {
         List<SelectItem> selectItems = new ArrayList<SelectItem>();
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
         
         for (ExperimentalSet experimentalSet : experimentalSets.experimentalSets)
             selectItems.add(new SelectItem(experimentalSet.GUID, experimentalSet.Identity.Name));
@@ -119,7 +119,7 @@ public class DocumentResource
     @Produces(MediaType.APPLICATION_JSON) 
     public Response experimentalSetList(@Context HttpServletRequest request, @PathParam("GUID") String GUID)
     {
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
 
         for (ExperimentalSet experimentalSet : experimentalSets.experimentalSets)
         {   
@@ -134,7 +134,7 @@ public class DocumentResource
     @Produces(MediaType.APPLICATION_JSON) 
     public Response experimentList(@Context HttpServletRequest request, @PathParam("GUID") String GUID)
     {
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
 
         for (ExperimentalSet experimentalSet : experimentalSets.experimentalSets)
         {   
@@ -159,7 +159,7 @@ public class DocumentResource
     @Consumes(MediaType.APPLICATION_JSON) 
     public Response experimentList(@Context HttpServletRequest request, @PathParam("GUID") String GUID, @PathParam("OrderBy") String OrderBy, List<Experiment> altExperiments)
     {
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
 
         for (ExperimentalSet experimentalSet : experimentalSets.experimentalSets)
         {   
@@ -178,7 +178,7 @@ public class DocumentResource
     @Produces(MediaType.APPLICATION_JSON) 
     public Response shouldDisplayAsJsonString(@Context HttpServletRequest request)
     {
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
         return Response.status(Status.OK).entity(experimentalSets).build();
     }
     
@@ -186,7 +186,7 @@ public class DocumentResource
     @Produces(MediaType.TEXT_XML) 
     public Response shouldDisplayAsXmlString(@Context HttpServletRequest request) throws JsonProcessingException
     {
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
         return Response.status(Status.OK).entity(experimentalSets.toXml()).build();
     }
     
@@ -195,29 +195,11 @@ public class DocumentResource
     @Produces(MediaType.TEXT_XML) 
     public Response download(@Context HttpServletRequest request) throws JsonProcessingException
     {
-        ExperimentalSets experimentalSets = getExperimentalSets(request);
+        ExperimentalSets experimentalSets = DocumentRepository.instance().getExperimentalSets(request);
         return Response.status(Status.OK)
                        .type(MediaType.APPLICATION_OCTET_STREAM)
                        .header("Content-Disposition", "inline;filename=" + UPDATED_FILENAME_PREFIX + experimentalSets.filename)
                        .entity(experimentalSets.toXml())
                        .build();
-    }
-
-    public ExperimentalSets getExperimentalSets(HttpServletRequest request)
-    {
-        //TODO: This can be a repository.
-
-        HttpSession session = request.getSession();
-        ExperimentalSets experimentalSets = (ExperimentalSets) session.getAttribute("ExperimentalSets");
-        if (null == experimentalSets)
-            throw new RuntimeException("No ExperimentalSets found in user's session");
-        return experimentalSets;
-    }
-
-    public void setExperimentalSets(HttpServletRequest request, ExperimentalSets experimentalSets)
-    {
-        HttpSession session = request.getSession();
-        session.setAttribute("ExperimentalSets", experimentalSets);
-        return;
     }
 }

@@ -7,7 +7,7 @@ import cv.representation.ExperimentalSets;
 
 public class DocumentRepository extends BaseRepository
 {
-    private static DocumentRepository documentRepositorySingleton = new DocumentRepository();
+    private static final DocumentRepository DOCUMENT_REPOSITORY_SINGLETON = new DocumentRepository();
     
     private DocumentRepository()
     {
@@ -16,7 +16,7 @@ public class DocumentRepository extends BaseRepository
     
     public static DocumentRepository instance()
     {
-        return documentRepositorySingleton;
+        return DOCUMENT_REPOSITORY_SINGLETON;
     }
     
     public ExperimentalSets getExperimentalSets(HttpServletRequest request)
