@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExperimentalSets>
+	<ExperimentalSet GUID="Set01">
+		<Identity>
+			<Name>The First Experimental Set</Name>
+			<Description/>
+		</Identity>
+		<Experiments OrderBy="Value">
+			<Experiment GUID="Expt0009" DesignIndex="15" RunIndex="12">11</Experiment>
+			<Experiment GUID="Expt0014" DesignIndex="14" RunIndex="7" >25</Experiment>
+			<Experiment GUID="Expt0013" DesignIndex="13" RunIndex="3" >37</Experiment>
+			<Experiment GUID="Expt0012" DesignIndex="12" RunIndex="1" >41</Experiment>
+			<Experiment GUID="Expt0011" DesignIndex="11" RunIndex="5" >54</Experiment>
+			<Experiment GUID="Expt0010" DesignIndex="10" RunIndex="9" >69</Experiment>
+			<Experiment GUID="Expt0015" DesignIndex="9"  RunIndex="11">71</Experiment>
+			<Experiment GUID="Expt0008" DesignIndex="8"  RunIndex="14">82</Experiment>
+			<Experiment GUID="Expt0007" DesignIndex="7"  RunIndex="4" >99</Experiment>
+			<Experiment GUID="Expt0006" DesignIndex="6"  RunIndex="6" >101</Experiment>
+			<Experiment GUID="Expt0005" DesignIndex="5"  RunIndex="2" >113</Experiment>
+			<Experiment GUID="Expt0004" DesignIndex="4"  RunIndex="8" >124</Experiment>
+			<Experiment GUID="Expt0003" DesignIndex="3"  RunIndex="10">135</Experiment>
+			<Experiment GUID="Expt0002" DesignIndex="2"  RunIndex="15">142</Experiment>
+			<Experiment GUID="Expt0001" DesignIndex="1"  RunIndex="13">152</Experiment>
+		</Experiments>
+	</ExperimentalSet>
+	<ExperimentalSet GUID="Set02">
+		<Identity>
+			<Name>The Second Experimental Set</Name>
+			<Description/>
+		</Identity>
+		<Experiments OrderBy="Run Index">
+			<Experiment GUID="Expt1012" DesignIndex="12" RunIndex="1" >1004</Experiment>
+			<Experiment GUID="Expt1005" DesignIndex="5"  RunIndex="2" >1102</Experiment>
+			<Experiment GUID="Expt1013" DesignIndex="13" RunIndex="3" >1324</Experiment>
+			<Experiment GUID="Expt1007" DesignIndex="7"  RunIndex="4" >1921</Experiment>
+			<Experiment GUID="Expt1011" DesignIndex="11" RunIndex="5" >1245</Experiment>
+			<Experiment GUID="Expt1006" DesignIndex="6"  RunIndex="6" >1210</Experiment>
+			<Experiment GUID="Expt1014" DesignIndex="14" RunIndex="7" >1712</Experiment>
+			<Experiment GUID="Expt1004" DesignIndex="4"  RunIndex="8" >1411</Experiment>
+			<Experiment GUID="Expt1010" DesignIndex="10" RunIndex="9" >1624</Experiment>
+			<Experiment GUID="Expt1003" DesignIndex="3"  RunIndex="10">1324</Experiment>
+			<Experiment GUID="Expt1015" DesignIndex="9"  RunIndex="11">1799</Experiment>
+			<Experiment GUID="Expt1009" DesignIndex="15" RunIndex="12">1911</Experiment>
+			<Experiment GUID="Expt1001" DesignIndex="1"  RunIndex="13">1514</Experiment>
+			<Experiment GUID="Expt1008" DesignIndex="8"  RunIndex="14">1888</Experiment>
+			<Experiment GUID="Expt1002" DesignIndex="2"  RunIndex="15">1412</Experiment>
+		</Experiments>
+	</ExperimentalSet>
+	<ExperimentalSet GUID="Set03">
+		<Identity>
+			<Name>The Third Experimental Set</Name>
+			<Description/>
+		</Identity>
+		<Experiments OrderBy="Design Index">
+			<Experiment GUID="Expt2001" DesignIndex="1"  RunIndex="13">2115</Experiment>
+			<Experiment GUID="Expt2002" DesignIndex="2"  RunIndex="15">2014</Experiment>
+			<Experiment GUID="Expt2003" DesignIndex="3"  RunIndex="10">2213</Experiment>
+			<Experiment GUID="Expt2004" DesignIndex="4"  RunIndex="8" >2312</Experiment>
+			<Experiment GUID="Expt2005" DesignIndex="5"  RunIndex="2" >2411</Experiment>
+			<Experiment GUID="Expt2006" DesignIndex="6"  RunIndex="6" >2510</Experiment>
+			<Experiment GUID="Expt2007" DesignIndex="7"  RunIndex="4" >2679</Experiment>
+			<Experiment GUID="Expt2008" DesignIndex="8"  RunIndex="14">2718</Experiment>
+			<Experiment GUID="Expt2009" DesignIndex="9"  RunIndex="11">2887</Experiment>
+			<Experiment GUID="Expt2010" DesignIndex="10" RunIndex="9" >2916</Experiment>
+			<Experiment GUID="Expt2011" DesignIndex="11" RunIndex="5" >2985</Experiment>
+			<Experiment GUID="Expt2012" DesignIndex="12" RunIndex="1" >2844</Experiment>
+			<Experiment GUID="Expt2013" DesignIndex="13" RunIndex="3" >2713</Experiment>
+			<Experiment GUID="Expt2014" DesignIndex="14" RunIndex="7" >2612</Experiment>
+			<Experiment GUID="Expt2015" DesignIndex="15" RunIndex="12">2551</Experiment>
+		</Experiments>
+	</ExperimentalSet>
+</ExperimentalSets>

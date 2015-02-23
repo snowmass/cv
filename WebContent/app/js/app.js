@@ -12,6 +12,6 @@ cvApp.config([ '$routeProvider', function($routeProvider) {
 	}).when('/about', {
 		templateUrl : 'partials/about.html',
 	}).otherwise({
-		redirectTo : '/work'
+		redirectTo : '/about'
 	});
 } ]);
